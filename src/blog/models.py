@@ -4,8 +4,9 @@ from fastapi_users_db_sqlalchemy import SQLAlchemyBaseUserTable
 from sqlalchemy import MetaData, Table, Column, Integer, String, Text, TIMESTAMP, ForeignKey, Boolean
 from sqlalchemy.orm import relationship
 
-from auth.models import User
 from database import Base
+
+from auth.models import User
 
 metadata = MetaData()
 
@@ -19,6 +20,7 @@ class Book(Base):
     category_id = Column(Integer, ForeignKey('category.id'))
     publisher_id = Column(Integer, ForeignKey('publisher.id'))
     date_publication = Column(TIMESTAMP, default=datetime.utcnow)
+    file = Column(String(5000), nullable=False)
     date_created_post = Column(TIMESTAMP, default=datetime.utcnow)
     num_pages = Column(Integer, nullable=False)
     permit = Column(Boolean, default=False, nullable=False)
