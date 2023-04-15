@@ -8,7 +8,7 @@ async def save_photo(
         title: str,
         file: UploadFile,
 ):
-    file_name = f'media/poster_book/{uuid4()}.jpg'
+    file_name = f'../media/poster_book/{uuid4()}.jpg'
     if file.content_type.split('/')[0] == 'image':
         await write_image(file_name, file)
     else:
